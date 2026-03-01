@@ -1,0 +1,279 @@
+{
+  "employes": [
+    {
+      "id": "1",
+      "nom": "Bachiri",
+      "grade": "Technicien",
+      "sexe": "m",
+      "salaire": 7500
+    },
+    {
+      "id": "2",
+      "nom": "Zeroual",
+      "grade": "Ingénieur",
+      "sexe": "f",
+      "salaire": 10500
+    },
+    {
+      "id": "3",
+      "nom": "Moumen",
+      "grade": "Doctor",
+      "sexe": "m",
+      "salaire": 15000
+    },
+    {
+      "id": "4",
+      "nom": "Lahmar",
+      "grade": "Technicien",
+      "sexe": "f",
+      "salaire": 8000
+    },
+    {
+      "id": "5",
+      "nom": "Khalfi",
+      "grade": "Ingénieur",
+      "sexe": "m",
+      "salaire": 11000
+    },
+    {
+      "id": "6",
+      "nom": "Amrani",
+      "grade": "Doctor",
+      "sexe": "f",
+      "salaire": 15500
+    },
+    {
+      "id": "7",
+      "nom": "Fassi",
+      "grade": "Technicien",
+      "sexe": "m",
+      "salaire": 7200
+    },
+    {
+      "id": "8",
+      "nom": "Rachidi",
+      "grade": "Ingénieur",
+      "sexe": "f",
+      "salaire": 10800
+    },
+    {
+      "id": "9",
+      "nom": "Sahli",
+      "grade": "Doctor",
+      "sexe": "m",
+      "salaire": 15200
+    },
+    {
+      "id": "10",
+      "nom": "El Alami",
+      "grade": "Technicien",
+      "sexe": "f",
+      "salaire": 7800
+    },
+    {
+      "id": "11",
+      "nom": "Benjelloun",
+      "grade": "Ingénieur",
+      "sexe": "m",
+      "salaire": 11200
+    },
+    {
+      "id": "12",
+      "nom": "Chakiri",
+      "grade": "Doctor",
+      "sexe": "f",
+      "salaire": 15800
+    },
+    {
+      "id": "13",
+      "nom": "Mansouri",
+      "grade": "Technicien",
+      "sexe": "m",
+      "salaire": 7600
+    },
+    {
+      "id": "14",
+      "nom": "El Fassi",
+      "grade": "Ingénieur",
+      "sexe": "f",
+      "salaire": 10900
+    },
+    {
+      "id": "15",
+      "nom": "Mohamed Oussous",
+      "grade": "Doctor",
+      "sexe": "m",
+      "salaire": 15200
+    }
+  ],
+  "formations": [
+    {
+      "id": "1",
+      "Sujet": "Framework Angular",
+      "datedebut": "2025-12-16",
+      "datefin": "2025-12-21",
+      "etat": "encours"
+    },
+    {
+      "id": "2",
+      "Sujet": "Framework Angular",
+      "datedebut": "2025-12-16",
+      "datefin": "2025-12-21",
+      "etat": "encours"
+    },
+    {
+      "id": "3",
+      "Sujet": "PHP Laravel ",
+      "datedebut": "2025-12-29",
+      "datefin": "2026-01-02",
+      "etat": "programmée"
+    },
+    {
+      "id": "4",
+      "Sujet": "HTML 5 et CSS3",
+      "datedebut": "2025-10-12",
+      "datefin": "2025-10-15",
+      "etat": "terminée"
+    },
+    {
+      "id": "5",
+      "Sujet": "React js",
+      "datedebut": "2026-01-06",
+      "datefin": "2026-01-10",
+      "etat": "encours"
+    },
+    {
+      "id": "6",
+      "Sujet": "Node js",
+      "datedebut": "2026-01-20",
+      "datefin": "2026-01-25",
+      "etat": "programmée"
+    },
+    {
+      "id": "7",
+      "Sujet": "Python Django",
+      "datedebut": "2026-02-01",
+      "datefin": "2026-02-05",
+      "etat": "programmée"
+    },
+    {
+      "id": "8",
+      "Sujet": "Java Spring Boot",
+      "datedebut": "2026-02-10",
+      "datefin": "2026-02-15",
+      "etat": "programmée"
+    },
+    {
+      "id": "9",
+      "Sujet": "DevOps Basics",
+      "datedebut": "2026-02-20",
+      "datefin": "2026-02-25",
+      "etat": "programmée"
+    },
+    {
+      "id": "10",
+      "Sujet": "Cybersecurity Fundamentals",
+      "datedebut": "2026-03-01",
+      "datefin": "2026-03-05",
+      "etat": "programmée"
+    },
+    {
+      "id": "11",
+      "Sujet": "Data Science ",
+      "datedebut": "2026-03-10",
+      "datefin": "2026-03-15",
+      "etat": "programmée"
+    },
+    {
+      "id": "12",
+      "Sujet": "Machine Learning ",
+      "datedebut": "2026-03-20",
+      "datefin": "2026-03-25",
+      "etat": "programmée"
+    },
+    {
+      "id": "14",
+      "Sujet": "Agile ",
+      "datedebut": "2026-04-10",
+      "datefin": "2026-04-15",
+      "etat": "programmée"
+    }
+  ],
+  "participations": [
+    {
+      "id": "1",
+      "idform": "1",
+      "idemp": "1"
+    },
+    {
+      "id": "2",
+      "idform": "1",
+      "idemp": "2"
+    },
+    {
+      "id": "3",
+      "idemp": "1",
+      "idform": "9"
+    },
+    {
+      "id": "4",
+      "idform": "2",
+      "idemp": "3"
+    },
+    {
+      "id": "5",
+      "idform": "3",
+      "idemp": "2"
+    },
+    {
+      "id": "6",
+      "idform": "3",
+      "idemp": "3"
+    },
+    {
+      "id": "8",
+      "idemp": "11",
+      "idform": "8"
+    },
+    {
+      "id": "9",
+      "idemp": "12",
+      "idform": "3"
+    },
+    {
+      "id": "10",
+      "idemp": "10",
+      "idform": "11"
+    },
+    {
+      "id": "11",
+      "idemp": "4",
+      "idform": "7"
+    },
+    {
+      "id": "12",
+      "idemp": "6",
+      "idform": "5"
+    },
+    {
+      "id": "13",
+      "idemp": "9",
+      "idform": "9"
+    },
+    {
+      "id": "14",
+      "idemp": "14",
+      "idform": "12"
+    },
+    {
+      "id": "15",
+      "idemp": "5",
+      "idform": "4"
+    },
+    {
+      "id": "16",
+      "idemp": "1",
+      "idform": "3"
+    }
+  ]
+}
