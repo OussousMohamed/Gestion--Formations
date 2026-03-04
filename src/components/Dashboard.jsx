@@ -64,11 +64,10 @@ const Dashboard = () => {
       .sort((a, b) => b.count - a.count);
   }, [employees, participations]);
 
-  // منطق اختيار الفائزين فقط (أعلى مشاركة)
   const topWinners = useMemo(() => {
     if (employeePerformance.length === 0) return [];
     const maxScore = employeePerformance[0].count;
-    if (maxScore === 0) return []; // إذا لم يشارك أحد لا نعرض شيئاً
+    if (maxScore === 0) return []; 
     return employeePerformance.filter((emp) => emp.count === maxScore);
   }, [employeePerformance]);
 
@@ -86,15 +85,13 @@ const Dashboard = () => {
     return (
       formations
         .map((f) => ({
-          // تقصير النص قليلاً إذا كان طويلاً جداً للحفاظ على جمالية الرادار
           subject:
             f.Sujet.length > 12 ? f.Sujet.substring(0, 10) + '..' : f.Sujet,
           A: participations.filter((p) => String(p.idform) === String(f.id))
             .length,
         }))
-        // أزلنا .slice(0, 6) هنا لإظهار كل التكوينات
         .filter((d) => d.A >= 0)
-    ); // أظهرنا حتى التي قيمتها 0 ليعطي شكلاً كاملاً للرادار
+    ); 
   }, [formations, participations]);
 
   const COLORS = [
@@ -208,11 +205,9 @@ const Dashboard = () => {
             </h3>
             <div className="h-[450px] w-full">
               {' '}
-              {/* زدنا الارتفاع قليلاً لاستيعاب الأسماء المائلة */}
               <ResponsiveContainer width="100%" height="100%">
                 <BarChart
                   data={employeePerformance}
-                  // زدنا الهامش السفلي (bottom) من 20 إلى 60 لترك مساحة كافية للأسماء الطويلة
                   margin={{ top: 10, right: 10, left: -20, bottom: 60 }}
                 >
                   <CartesianGrid
@@ -226,17 +221,16 @@ const Dashboard = () => {
                     axisLine={false}
                     tickLine={false}
                     interval={0}
-                    // استخدام دالة مخصصة لقص الأسماء إذا تجاوزت 10 أحرف لضمان الوضوح
                     tickFormatter={(value) =>
                       value.length > 10 ? `${value.substring(0, 8)}..` : value
                     }
                     tick={{
                       fill: '#94a3b8',
-                      fontSize: 11, // تكبير الخط قليلاً للوضوح
-                      fontWeight: '900', // جعل الخط عريضاً جداً ليتماشى مع هويتك البصرية
-                      dy: 10, // إزاحة النص للأسفل قليلاً عن المحور
+                      fontSize: 11, 
+                      fontWeight: '900', 
+                      dy: 10, 
                     }}
-                    angle={-45} // الحفاظ على الزاوية المائلة كما في الصورة
+                    angle={-45} 
                     textAnchor="end"
                   />
                   <YAxis
@@ -253,7 +247,6 @@ const Dashboard = () => {
                       borderRadius: '15px',
                     }}
                     itemStyle={{ color: '#ffffff', fontWeight: 'bold' }}
-                    // إضافة العنوان الكامل في الـ Tooltip ليظهر الاسم كاملاً حتى لو كان مقصوصاً في المحور
                     labelStyle={{
                       color: '#6366f1',
                       fontWeight: 'black',
@@ -262,7 +255,7 @@ const Dashboard = () => {
                   />
                   <Bar
                     dataKey="count"
-                    radius={[10, 10, 0, 0]} // جعل الزوايا أكثر انحناءً لتطابق تصميمك
+                    radius={[10, 10, 0, 0]} 
                     barSize={30}
                     activeBar={{ fill: '#ffffff' }}
                   >
@@ -282,7 +275,7 @@ const Dashboard = () => {
             </div>
           </div>
 
-          {/* Pie Chart - المبيان الدائري المطور */}
+          {/* Pie Chart */}
           <div className="lg:col-span-4 bg-white dark:bg-slate-800/20 backdrop-blur-xl p-8 rounded-[3rem] border border-slate-200 dark:border-slate-700/50 shadow-2xl dark:shadow-none flex flex-col items-center min-h-full transition-all duration-300">
             <h3 className="text-2xl font-black italic uppercase mb-2 tracking-tighter text-slate-800 dark:text-white transition-colors duration-300">
               Part des Formations
@@ -296,11 +289,11 @@ const Dashboard = () => {
                 <PieChart>
                   <Pie
                     data={formationDistribution}
-                    innerRadius={80} // جعلنا الحلقة أنحف لتكون أكثر عصرية
+                    innerRadius={80} 
                     outerRadius={105}
                     paddingAngle={8}
                     dataKey="value"
-                    stroke="none" // إزالة الحدود لتبدو الألوان ناعمة كالصورة
+                    stroke="none" 
                   >
                     {formationDistribution.map((entry, index) => (
                       <Cell
@@ -323,7 +316,6 @@ const Dashboard = () => {
                 </PieChart>
               </ResponsiveContainer>
 
-              {/* إضافة رقم إجمالي في منتصف الدائرة لإعطاء تفاصيل أكثر */}
               <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none">
                 <span className="text-3xl font-black text-white italic">
                   {formationDistribution.reduce(
@@ -337,7 +329,6 @@ const Dashboard = () => {
               </div>
             </div>
 
-            {/* Legend المخصص مع النقاط الملونة (Dots) كما في Flux Actif */}
             <div className="mt-6 w-full space-y-3 overflow-y-auto max-h-[150px] pr-2 custom-scrollbar">
               {formationDistribution.map((f, i) => (
                 <div
@@ -345,7 +336,6 @@ const Dashboard = () => {
                   className="flex justify-between items-center group"
                 >
                   <div className="flex items-center gap-3">
-                    {/* النقطة الملونة الذكية */}
                     <div
                       className="w-2.5 h-2.5 rounded-full shadow-lg shadow-black/20 group-hover:scale-125 transition-transform"
                       style={{ backgroundColor: COLORS[i % COLORS.length] }}
@@ -374,7 +364,6 @@ const Dashboard = () => {
             </div>
             <div className="h-[500px] w-full max-w-[800px] relative z-10">
               {' '}
-              {/* زدنا الارتفاع قليلاً لاستيعاب البيانات الإضافية */}
               <ResponsiveContainer width="100%" height="100%">
                 <RadarChart
                   cx="50%"
@@ -385,7 +374,7 @@ const Dashboard = () => {
                   <PolarGrid stroke="#334155" />
                   <PolarAngleAxis
                     dataKey="subject"
-                    tick={{ fill: '#94a3b8', fontSize: 10, fontWeight: 'bold' }} // صغرنا الخط قليلاً للوضوح
+                    tick={{ fill: '#94a3b8', fontSize: 10, fontWeight: 'bold' }} 
                   />
                   <PolarRadiusAxis
                     angle={30}

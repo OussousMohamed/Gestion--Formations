@@ -280,16 +280,12 @@ const EmployeeList = () => {
                           </td>
 
                           <td className="px-6 py-4 whitespace-nowrap">
-                            {/* هذه الحاوية تقوم بتوسيط المحتوى داخل الخلية */}
                             <div className="flex justify-center">
-                              {/* هذه الحاوية الداخلية لها عرض محدد لضمان استقامة الأيقونات */}
                               <div className="flex items-center gap-4 w-full max-w-[200px]">
-                                {/* الأيقونة (Avatar) - ثابتة المكان */}
                                 <div className="flex-shrink-0 w-10 h-10 rounded-full bg-blue-500/10 flex items-center justify-center text-blue-500 shadow-sm">
                                   <FaUserAlt size={16} />
                                 </div>
 
-                                {/* الاسم - يبدأ دائماً بعد الأيقونة مباشرة */}
                                 <span className="text-sm font-semibold text-slate-800 dark:text-slate-200 truncate">
                                   {emp.nom}
                                 </span>
@@ -297,13 +293,6 @@ const EmployeeList = () => {
                             </div>
                           </td>
 
-                          {/* <td className="px-6 py-4">
-                        <div className="flex flex-col items-center justify-center">
-                          <span className="font-bold text-slate-700 dark:text-slate-200 text-base">
-                            {emp.nom}
-                          </span>
-                        </div>
-                      </td> */}
 
                           <td className="px-6 py-4">
                             <span
@@ -339,7 +328,6 @@ const EmployeeList = () => {
 
                           <td className="px-6 py-4">
                             <div className="flex justify-center items-center gap-3">
-                              {/* أيقونة تفاعلية يتغير لونها حسب عدد التكوينات */}
                               <div
                                 className={`
       flex items-center justify-center w-10 h-10 rounded-xl font-black text-sm transition-all
@@ -353,13 +341,11 @@ const EmployeeList = () => {
                                 {emp.formationsCount || 0}
                               </div>
 
-                              {/* نصوص توضيحية جانبية */}
                               <div className="flex flex-col">
                                 <span className="text-xs font-bold text-slate-700 dark:text-slate-200">
                                   Formations
                                 </span>
                                 <div className="flex items-center gap-1">
-                                  {/* شريط تقدم صغير (Mini Progress) يعطي لمسة بصرية مذهلة */}
                                   <div className="w-16 h-1.5 bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
                                     <div
                                       className="h-full bg-indigo-500 rounded-full"

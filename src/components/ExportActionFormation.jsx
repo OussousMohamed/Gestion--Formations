@@ -36,7 +36,7 @@ export default function ExportActionFormation({ data }) {
       head: [tableColumn],
       body: tableRows,
       startY: 30,
-      headStyles: { fillColor: [79, 70, 229] }, // لون Indigo
+      headStyles: { fillColor: [79, 70, 229] }, 
       theme: 'striped',
     });
 

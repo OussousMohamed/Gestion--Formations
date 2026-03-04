@@ -18,7 +18,7 @@ import {
   addFormation,
   updateFormation,
 } from '../features/formationSlice';
-import { fetchParticipations } from '../features/participationSlice'; // استيراد المشاركات
+import { fetchParticipations } from '../features/participationSlice'; 
 import Paginnation from './Paginnation';
 import FormationModal from './FormationModal';
 import TableSkeleton from './TableSkeleton';
@@ -30,7 +30,7 @@ import FormationFilterBar from './FormationFiltrBar';
 const FormationList = () => {
   const dispatch = useDispatch();
 
-  // جلب البيانات من السلايسات المختلفة
+  
   const { formations: list } = useSelector((state) => state.formations);
   const { participations } = useSelector((state) => state.participations);
   const [loading, setLoading] = useState(true);
@@ -66,7 +66,7 @@ const FormationList = () => {
     return () => clearTimeout(timer);
   }, [dispatch]);
 
-  // منطق الفلترة الفعلي
+  
   const filteredFormations = list?.filter((form) => {
     return (
       (!filters.search ||
@@ -77,7 +77,7 @@ const FormationList = () => {
     );
   });
 
-  // دمج البيانات لحساب عدد المشاركين
+  
   const formationsWithStats = filteredFormations?.map((form) => ({
     ...form,
     participantsCount:
@@ -85,7 +85,7 @@ const FormationList = () => {
         .length || 0,
   }));
 
-  // Logic: Pagination
+  
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentItems =
@@ -245,17 +245,17 @@ const FormationList = () => {
                           </span>
                         </td>
 
-                        {/* SUJET (Fixed Alignment based on your image) */}
+                        
                         <td className="px-6 py-4 whitespace-nowrap">
                           <div className="flex justify-start items-center pl-8">
                             {' '}
-                            {/* pl-8 لضمان ابتعادها عن الحافة اليسرى قليلاً */}
+                            
                             <div className="flex items-center gap-4 w-full max-w-[300px]">
-                              {/* Icon Container - المربع البنفسجي */}
+                              
                               <div className="flex-shrink-0 w-12 h-12 rounded-2xl bg-indigo-600 text-white flex items-center justify-center shadow-lg shadow-indigo-500/20">
                                 <FaChalkboardTeacher size={20} />
                               </div>
-                              {/* Text - النص */}
+                              
                               <span className="text-sm font-bold text-slate-800 dark:text-slate-200 truncate group-hover:text-indigo-600 transition-colors">
                                 {form.Sujet}
                               </span>
@@ -282,7 +282,7 @@ const FormationList = () => {
                           </div>
                         </td>
 
-                        {/* PARTICIPANTS (Fixed to match your Progress Bar style) */}
+                        {/* PARTICIPANTS  */}
                         <td className="px-6 py-4">
                           <div className="flex justify-center items-center gap-4">
                             {/* Number Square */}

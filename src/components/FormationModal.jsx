@@ -41,22 +41,18 @@ export default function FormationModal({
     setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
-  // داخل دالة handleSubmit في FormationModal
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // 1. تحويل التواريخ لمقارنتها بدقة (بدون توقيت الساعات)
     const today = new Date().setHours(0, 0, 0, 0);
     const start = new Date(formData.datedebut).setHours(0, 0, 0, 0);
     const end = new Date(formData.datefin).setHours(0, 0, 0, 0);
 
-    // 2. التحقق من منطقية التواريخ (Validation)
     if (end < start) {
       toast.error('La date de fin لا يمكن أن تكون قبل تاريخ البداية !');
-      return; // إيقاف العملية هنا
+      return; 
     }
 
-    // 3. تحديد الحالة تلقائياً بناءً على تاريخ اليوم
     let autoEtat = 'programmée';
 
     if (today > end) {
@@ -65,7 +61,6 @@ export default function FormationModal({
       autoEtat = 'encours';
     }
 
-    // 4. الحفظ مع الحالة الجديدة
     handleSave({ ...formData, etat: autoEtat });
   };
 
@@ -73,7 +68,6 @@ export default function FormationModal({
 
   return (
     <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
-      {/* الخلفية الضبابية - Backdrop */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -82,14 +76,12 @@ export default function FormationModal({
         className="absolute inset-0 bg-slate-900/60 backdrop-blur-sm"
       />
 
-      {/* نافذة الـ Modal */}
       <motion.div
         initial={{ scale: 0.9, opacity: 0, y: 20 }}
         animate={{ scale: 1, opacity: 1, y: 0 }}
         exit={{ scale: 0.9, opacity: 0, y: 20 }}
         className="relative w-full max-w-lg bg-white dark:bg-slate-800 rounded-[2.5rem] shadow-2xl overflow-hidden border border-slate-100 dark:border-slate-700"
       >
-        {/* Header الفخم */}
         <div className="bg-gradient-to-r from-indigo-600 to-indigo-700 p-6 flex justify-between items-center text-white">
           <div className="flex items-center gap-3">
             <div className="bg-white/20 p-2 rounded-xl backdrop-blur-md">

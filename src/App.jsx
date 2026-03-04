@@ -11,11 +11,10 @@ import EmployeeList from './components/EmployeeList';
 import FormationList from './components/FormationList';
 import ParticipationList from './components/ParticipationList';
 import Dashboard from './components/Dashboard';
-import Login from './components/Login'; // سننشئه الآن
+import Login from './components/Login'; 
 import { Toaster } from 'react-hot-toast';
 
 export default function App() {
-  // جلب حالة المستخدم من Redux
   const { user } = useSelector((state) => state.auth);
 
   return (
@@ -23,13 +22,11 @@ export default function App() {
       <Toaster position="top-center" reverseOrder={false} />
 
       <Routes>
-        {/* مسار تسجيل الدخول - يظهر منفرداً بدون Sidebar */}
         <Route
           path="/login"
           element={!user ? <Login /> : <Navigate to="/" />}
         />
 
-        {/* المسارات المحمية */}
         <Route
           path="/*"
           element={

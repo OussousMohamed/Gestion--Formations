@@ -1,12 +1,10 @@
 import React from 'react';
 
 const TableSkeleton = () => {
-  // سنقوم بإنشاء 5 صفوف وهمية
   const rows = Array(5).fill(0);
 
   return (
     <div className="w-full bg-white dark:bg-slate-800 rounded-[2rem] overflow-hidden border border-slate-100 dark:border-slate-700 shadow-sm animate-pulse">
-      {/* رأس الجدول الوهمي */}
       <div className="h-16 bg-slate-50 dark:bg-slate-900/50 flex items-center px-8 gap-4">
         <div className="h-4 w-1/4 bg-slate-200 dark:bg-slate-700 rounded-lg"></div>
         <div className="h-4 w-1/6 bg-slate-200 dark:bg-slate-700 rounded-lg"></div>
@@ -14,13 +12,11 @@ const TableSkeleton = () => {
         <div className="h-4 w-1/4 bg-slate-200 dark:bg-slate-700 rounded-lg ml-auto"></div>
       </div>
 
-      {/* صفوف الجدول الوهمية */}
       {rows.map((_, index) => (
         <div
           key={index}
           className="h-20 flex items-center px-8 gap-6 border-t border-slate-50 dark:border-slate-700/50"
         >
-          {/* دائرة الصورة الشخصية الوهمية */}
           <div className="w-12 h-12 rounded-2xl bg-slate-100 dark:bg-slate-700"></div>
 
           <div className="flex-1 space-y-3">

@@ -16,7 +16,6 @@ const useDarkMode = () => {
     }
   }, [theme, colorTheme]);
 
-  // تحديث حالة السمة عند التغيير اليدوي أو تحميل الصفحة
   useEffect(() => {
     const root = window.document.documentElement;
     if (theme === 'dark') {
@@ -28,7 +27,6 @@ const useDarkMode = () => {
     }
   }, [theme]);
 
-  // دالة لتغيير السمة يدوياً
   const toggleTheme = (newTheme) => {
     setTheme(newTheme);
   };

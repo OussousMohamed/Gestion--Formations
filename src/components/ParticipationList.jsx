@@ -53,12 +53,10 @@ export default function ParticipationList() {
     dispatch(fetchFormations());
     dispatch(fetchEmployees());
     dispatch(fetchParticipations());
-    // ننتظر قليلاً لضمان تحميل البيانات في الـ Store
     const timer = setTimeout(() => setLoading(false), 1000);
     return () => clearTimeout(timer);
   }, [dispatch]);
 
-  // منطق الفلترة مع حماية ضد القيم الفارغة
   const filteredList = (participations || []).filter((p) => {
     const emp = employes?.find((e) => String(e.id) === String(p.idemp));
     const form = formations?.find((f) => String(f.id) === String(p.idform));
@@ -100,7 +98,6 @@ export default function ParticipationList() {
         );
         if (alreadyExists) return toast.error('Déjà inscrit !');
 
-        // حساب ID جديد لتفادي الـ Hash الغريب
         const maxId =
           participations.length > 0
             ? Math.max(...participations.map((p) => Number(p.id) || 0))
@@ -171,7 +168,6 @@ export default function ParticipationList() {
           </motion.button>
         </div>
 
-        {/* بطاقات الإحصائيات الجديدة */}
         <ParticipationStats
           participations={participations}
           formations={formations}
@@ -179,7 +175,7 @@ export default function ParticipationList() {
         />
 
         <ParticipationFilterBar
-          filteredData={dataForExport} // نرسل البيانات المجهزة للأسماء هنا
+          filteredData={dataForExport} 
           onSearchEmp={setSearchEmp}
           onSearchForm={setSearchForm}
           onReset={() => {
@@ -212,7 +208,6 @@ export default function ParticipationList() {
                 </tr>
               </thead>
               <tbody className="divide-y divide-slate-100 dark:divide-slate-700/50">
-                {/* تم تغيير mode إلى popLayout لحل التنبيه */}
                 <AnimatePresence mode="popLayout">
                   {currentItems.map((p, index) => {
                     const emp = employes?.find(
@@ -224,7 +219,7 @@ export default function ParticipationList() {
 
                     return (
                       <motion.tr
-                        key={p.id || index} // نضمن وجود مفتاح فريد دائماً
+                        key={p.id || index} 
                         layout
                         initial={{ opacity: 0, scale: 0.98 }}
                         animate={{ opacity: 1, scale: 1 }}

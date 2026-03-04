@@ -15,13 +15,11 @@ const ParticipationStats = ({
 }) => {
   const [activeDropdown, setActiveDropdown] = useState(null);
 
-  // 1. الحسابات الأساسية
   const total = participations.length;
   const uniqueParticipantsCount = [
     ...new Set(participations.map((p) => p.idemp)),
   ].length;
 
-  // 2. منطق البيانات للمتصدرين
   const getTopLearners = () => {
     if (total === 0) return [];
     const counts = participations.reduce((acc, p) => {

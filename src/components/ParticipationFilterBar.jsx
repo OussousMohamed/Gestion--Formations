@@ -67,7 +67,7 @@ const ParticipationFilterBar = ({
             </button>
           </div>
 
-          {/* Export Actions (Customized for Participations) */}
+          {/* Export Actions  */}
           <div className="flex-shrink-0">
             <ExportActionParticipation data={filteredData} />
           </div>

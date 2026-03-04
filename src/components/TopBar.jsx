@@ -26,7 +26,6 @@ const TopBar = ({ userName = 'Mohamed Oussous' }) => {
 
   return (
     <header className="h-20 bg-white/90 dark:bg-slate-900/95 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 flex items-center justify-between px-10 sticky top-0 z-40 transition-all shadow-sm">
-      {/* الجزء الأيسر: ترحيب متوسط الحجم وفخم */}
       <div className="flex items-center gap-5">
         <div className="p-3 bg-indigo-600 rounded-xl text-white shadow-lg shadow-indigo-500/20 hidden sm:block">
           <FaUsers size={22} />
@@ -48,9 +47,7 @@ const TopBar = ({ userName = 'Mohamed Oussous' }) => {
         </div>
       </div>
 
-      {/* الجزء الأيمن: الترتيب المطلوب (Deconnecter -> Admin) */}
       <div className="flex items-center gap-5">
-        {/* زر تسجيل الخروج - مقاس مريح للعين */}
         <button
           onClick={handleLogout}
           className="flex items-center gap-3 px-5 py-2.5 bg-red-600 hover:bg-red-700 text-white font-bold rounded-xl transition-all shadow-md shadow-red-500/20 active:scale-95 group"
@@ -62,10 +59,8 @@ const TopBar = ({ userName = 'Mohamed Oussous' }) => {
           <span className="text-sm">Se Déconnecter</span>
         </button>
 
-        {/* فاصل رأسي أنيق */}
         <div className="h-8 w-px bg-slate-200 dark:bg-slate-700 mx-1"></div>
 
-        {/* بروفايل الـ Admin - واضح وفخم */}
         <div className="flex items-center gap-3 bg-slate-50 dark:bg-slate-800/50 pl-4 pr-1 py-1 rounded-2xl border border-slate-100 dark:border-slate-800">
           <span className="text-sm font-black text-slate-700 dark:text-slate-200 uppercase tracking-widest">
             Admin

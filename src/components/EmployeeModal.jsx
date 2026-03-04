@@ -42,7 +42,6 @@ export default function EmployeeModal({
     <AnimatePresence>
       {show && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
-          {/* خلفية ضبابية داكنة */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -51,7 +50,6 @@ export default function EmployeeModal({
             className="absolute inset-0 bg-slate-900/60 backdrop-blur-sm"
           />
 
-          {/* جسم الـ Modal */}
           <motion.div
             initial={{ scale: 0.9, opacity: 0, y: 20 }}
             animate={{ scale: 1, opacity: 1, y: 0 }}
@@ -73,7 +71,7 @@ export default function EmployeeModal({
 
             <form onSubmit={handleSubmit} className="p-8">
               <div className="space-y-5">
-                {/* الاسم */}
+                {/* Nom */}
                 <div className="relative">
                   <label className="text-sm font-semibold text-slate-500 mb-1 block mr-1">
                    Nom de l'employé
@@ -92,7 +90,7 @@ export default function EmployeeModal({
                   </div>
                 </div>
 
-                {/* الرتبة */}
+                {/* Grade */}
                 <div>
                   <label className="text-sm font-semibold text-slate-500 mb-1 block mr-1">
                    Grade
@@ -113,7 +111,7 @@ export default function EmployeeModal({
                 </div>
 
                 <div className="grid grid-cols-2 gap-4">
-                  {/* الجنس */}
+                  {/* Sexe */}
                   <div>
                     <label className="text-sm font-semibold text-slate-500 mb-1 block mr-1">
                       Sexe
@@ -132,7 +130,7 @@ export default function EmployeeModal({
                     </div>
                   </div>
 
-                  {/* الراتب */}
+                  {/* salaire */}
                   <div>
                     <label className="text-sm font-semibold text-slate-500 mb-1 block mr-1">
                       Salaire (DH)
@@ -152,7 +150,7 @@ export default function EmployeeModal({
                 </div>
               </div>
 
-              {/* الأزرار */}
+              {/* Buttons */}
               <div className="flex gap-3 mt-10">
                 <button
                   type="button"

@@ -10,7 +10,7 @@ const FormationFilterBar = ({
   onSearch,
   onFilterChange,
   onReset,
-  filters, // نمرر قيم الفلاتر الحالية للتحقق
+  filters, 
 }) => {
   const handleDateChange = (name, value) => {
     if (name === 'datefin' && filters.datedebut && value < filters.datedebut) {
@@ -53,9 +53,9 @@ const FormationFilterBar = ({
                 className="w-full appearance-none pl-4 pr-8 py-3 bg-white dark:bg-slate-800 border-2 border-slate-100 dark:border-slate-700 rounded-2xl text-sm font-bold text-slate-600 dark:text-slate-300 outline-none focus:border-indigo-500 transition-all cursor-pointer"
               >
                 <option value="">Tous les États</option>
-                <option value="programmée">📅 Programmée</option>
-                <option value="encours">⏳ En cours</option>
-                <option value="terminée">✅ Terminée</option>
+                <option value="programmée">Programmée</option>
+                <option value="encours">En cours</option>
+                <option value="terminée">Terminée</option>
               </select>
               <FaChevronDown
                 className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none"

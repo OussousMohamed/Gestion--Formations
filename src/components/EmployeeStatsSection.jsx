@@ -3,7 +3,6 @@ import { motion } from 'framer-motion';
 import { FaUsers, FaMoneyBillWave, FaVenusMars } from 'react-icons/fa';
 
 export default function StatsSection({ employees }) {
-  // 1. حساب الإحصائيات برمجياً
   const totalEmployees = employees.length;
 
   const totalSalaries = employees.reduce(
@@ -56,14 +55,12 @@ export default function StatsSection({ employees }) {
           whileHover={{ y: -5 }}
           className="bg-white dark:bg-slate-800 p-6 rounded-[2rem] shadow-sm border border-slate-100 dark:border-slate-700 flex items-center gap-5 group transition-all"
         >
-          {/* الأيقونة الملونة */}
           <div
             className={`${stat.color} p-4 rounded-2xl text-white shadow-lg ${stat.shadow} dark:shadow-none group-hover:scale-110 transition-transform`}
           >
             {stat.icon}
           </div>
 
-          {/* النصوص */}
           <div className="flex flex-col">
             <span className="text-xs font-bold text-slate-400 uppercase tracking-widest mb-1">
               {stat.title}

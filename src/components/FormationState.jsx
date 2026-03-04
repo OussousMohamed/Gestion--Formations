@@ -3,13 +3,10 @@ import { motion } from 'framer-motion';
 import { FaChalkboardTeacher, FaClock, FaLayerGroup } from 'react-icons/fa';
 
 export default function FormationStats({ formations }) {
-  // التأكد من أن البيانات مصفوفة لتجنب الأخطاء
   const data = formations || [];
 
-  // 1. حساب الإحصائيات بدقة
   const total = data.length;
 
-  // استخدام .trim() للتأكد من أن المقارنة لا تتأثر بالمسافات الزائدة في النصوص
   const enCours = data.filter(
     (f) => f.etat?.trim().toLowerCase() === 'encours',
   ).length;
@@ -58,7 +55,7 @@ export default function FormationStats({ formations }) {
           whileHover={{ y: -5, scale: 1.02 }}
           className="bg-white dark:bg-slate-800 p-6 rounded-[2.5rem] shadow-sm border border-slate-100 dark:border-slate-700 flex items-center gap-5 group transition-all"
         >
-          {/* Icon Box (Left Side) */}
+          {/* Icon Box  */}
           <div
             className={`${stat.color} p-4 rounded-2xl text-white shadow-lg ${stat.shadow} dark:shadow-none group-hover:rotate-6 transition-transform`}
           >
@@ -80,7 +77,6 @@ export default function FormationStats({ formations }) {
             </div>
           </div>
 
-          {/* تم إزالة أيقونة FaChartLine من هنا لتبسيط التصميم */}
         </motion.div>
       ))}
     </div>

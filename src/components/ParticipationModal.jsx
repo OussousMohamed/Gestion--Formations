@@ -32,18 +32,15 @@ export default function ParticipationModal({
     }
   }, [initialData, show]);
 
-  // داخل مكون ParticipationModal
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // تحويل القيم إلى أرقام لضمان توافقها مع الـ Database والـ Store
     const dataToSave = {
       ...formData,
       idemp: Number(formData.idemp),
       idform: Number(formData.idform),
     };
 
-    // إذا كانت عملية تعديل، نحافظ على الـ ID الأصلي الخاص بالتسجيل
     if (initialData?.id) {
       dataToSave.id = initialData.id;
     }

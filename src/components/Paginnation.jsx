@@ -15,13 +15,11 @@ export default function Pagination({
     pageNumbers.push(i);
   }
 
-  // إذا كانت الصفحات أقل من أو تساوي 1، لا داعي لعرض المكون
   if (totalPages <= 1) return null;
 
   return (
     <nav className="flex items-center justify-center py-6">
       <ul className="flex items-center gap-2 bg-white dark:bg-slate-800 px-4 py-2 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-700">
-        {/* زر الصفحة السابقة */}
         <li>
           <button
             onClick={() => currentPage > 1 && onPageChange(currentPage - 1)}
@@ -36,7 +34,6 @@ export default function Pagination({
           </button>
         </li>
 
-        {/* أرقام الصفحات */}
         {pageNumbers.map((number) => (
           <li key={number}>
             <motion.button
@@ -54,7 +51,6 @@ export default function Pagination({
           </li>
         ))}
 
-        {/* زر الصفحة التالية */}
         <li>
           <button
             onClick={() =>

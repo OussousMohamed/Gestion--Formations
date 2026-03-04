@@ -1,7 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-// دالة تسجيل الدخول (Async Thunk)
 export const loginUser = createAsyncThunk('auth/login', async (credentials, { rejectWithValue }) => {
   try {
     const response = await axios.get('http://localhost:8585/users');
@@ -10,7 +9,7 @@ export const loginUser = createAsyncThunk('auth/login', async (credentials, { re
     );
 
     if (user) {
-      localStorage.setItem('user', JSON.stringify(user)); // حفظ الجلسة
+      localStorage.setItem('user', JSON.stringify(user));
       return user;
     } else {
       return rejectWithValue('Email ou mot de passe incorrect');

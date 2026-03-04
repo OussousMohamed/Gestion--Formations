@@ -2,7 +2,7 @@ import React from 'react';
 import { FaFilePdf, FaFileExcel } from 'react-icons/fa';
 import * as XLSX from 'xlsx';
 import { jsPDF } from 'jspdf';
-import autoTable from 'jspdf-autotable'; // استيراد مباشر
+import autoTable from 'jspdf-autotable'; 
 
 export default function ExportActions({ data }) {
   const exportToExcel = () => {
@@ -34,7 +34,7 @@ export default function ExportActions({ data }) {
         `${emp.salaire} DH`,
       ]);
 
-      // القضاء على الخطأ نهائياً باستدعاء autoTable كدالة مستقلة
+      
       autoTable(doc, {
         head: [tableColumn],
         body: tableRows,
@@ -51,7 +51,7 @@ export default function ExportActions({ data }) {
   };
 
   return (
-    // وضعنا الأزرار داخل div واحد لحل تنبيه AnimatePresence
+    
     <div className="flex items-center gap-3">
       <button
         onClick={exportToExcel}

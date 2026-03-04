@@ -6,7 +6,7 @@ import autoTable from 'jspdf-autotable';
 
 export default function ExportActionParticipation({ data }) {
   const exportToExcel = () => {
-    // نجهز البيانات بشكل مقروء
+    
     const excelData = data.map((item) => ({
       Collaborateur: item.empNom,
       Formation: item.formSujet,
@@ -30,7 +30,7 @@ export default function ExportActionParticipation({ data }) {
       head: [tableColumn],
       body: tableRows,
       startY: 30,
-      headStyles: { fillColor: [79, 70, 229] }, // Indigo
+      headStyles: { fillColor: [79, 70, 229] }, 
       theme: 'striped',
     });
 
