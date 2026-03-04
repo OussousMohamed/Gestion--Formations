@@ -1,33 +1,62 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import Sidebar from './components/SideBar';
 import TopBar from './components/TopBar';
 import EmployeeList from './components/EmployeeList';
 import FormationList from './components/FormationList';
 import ParticipationList from './components/ParticipationList';
 import Dashboard from './components/Dashboard';
+import Login from './components/Login'; // سننشئه الآن
 import { Toaster } from 'react-hot-toast';
 
 export default function App() {
+  // جلب حالة المستخدم من Redux
+  const { user } = useSelector((state) => state.auth);
+
   return (
     <Router>
-      <div className="flex bg-slate-50 dark:bg-slate-900 min-h-screen">
-        <Toaster position="top-center" reverseOrder={false} />
-        {/* Sidebar stays fixed */}
-        <Sidebar />
+      <Toaster position="top-center" reverseOrder={false} />
 
-        {/* Main Content Area */}
-        <main className="flex-1 overflow-y-auto bg-slate-50 dark:bg-slate-900 h-screen">
-          <TopBar />
-          <div className="w-full">
-            <Routes>
-              <Route path="/" element={<Dashboard />} />
-              <Route path="/employees" element={<EmployeeList />} />
-              <Route path="/formations" element={<FormationList />} />
-              <Route path="/participations" element={<ParticipationList />} />
-            </Routes>
-          </div>
-        </main>
-      </div>
+      <Routes>
+        {/* مسار تسجيل الدخول - يظهر منفرداً بدون Sidebar */}
+        <Route
+          path="/login"
+          element={!user ? <Login /> : <Navigate to="/" />}
+        />
+
+        {/* المسارات المحمية */}
+        <Route
+          path="/*"
+          element={
+            user ? (
+              <div className="flex bg-slate-50 dark:bg-[#0f172a] min-h-screen transition-colors duration-500">
+                <Sidebar />
+                <main className="flex-1 overflow-y-auto h-screen">
+                  <TopBar />
+                  <div className="w-full">
+                    <Routes>
+                      <Route path="/" element={<Dashboard />} />
+                      <Route path="/employees" element={<EmployeeList />} />
+                      <Route path="/formations" element={<FormationList />} />
+                      <Route
+                        path="/participations"
+                        element={<ParticipationList />}
+                      />
+                    </Routes>
+                  </div>
+                </main>
+              </div>
+            ) : (
+              <Navigate to="/login" />
+            )
+          }
+        />
+      </Routes>
     </Router>
   );
 }
