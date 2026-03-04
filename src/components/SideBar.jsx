@@ -7,7 +7,9 @@ import {
   FaChartPie,
   FaUserGraduate,
   FaMoon,
+  FaSun,
 } from 'react-icons/fa';
+import useDarkMode from '../hooks/useDarkMode';
 
 // المكون الفرعي للرابط
 const SidebarItem = ({ to, icon: Icon, label }) => (
@@ -36,11 +38,13 @@ const SidebarItem = ({ to, icon: Icon, label }) => (
 
 // المكون الرئيسي - تأكد من وجود export default في الأسفل
 function Sidebar() {
+  const [theme, setTheme] = useDarkMode();
+
   return (
     <motion.div
       initial={{ x: -100, opacity: 0 }}
       animate={{ x: 0, opacity: 1 }}
-      className="w-72 h-screen bg-white dark:bg-slate-900 border-r border-slate-200 dark:border-slate-800 flex flex-col sticky top-0 z-50"
+      className="w-72 h-screen bg-white dark:bg-slate-900 border-r border-slate-200 dark:border-slate-800 flex flex-col sticky top-0 z-50 transition-colors duration-300"
     >
       {/* Logo Section */}
       <div className="px-6 py-10 flex items-center gap-3">
@@ -79,10 +83,17 @@ function Sidebar() {
 
       {/* Theme Toggle Button */}
       <div className="p-6 mt-auto">
-        <button className="w-full flex items-center justify-center gap-3 p-3.5 rounded-2xl bg-slate-50 dark:bg-slate-800/50 text-slate-500 dark:text-slate-400 hover:bg-indigo-600 hover:text-white transition-all duration-300 group">
-          <FaMoon className="group-hover:rotate-[360deg] transition-transform duration-500" />
+        <button
+          onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+          className="w-full flex items-center justify-center gap-3 p-3.5 rounded-2xl bg-slate-50 dark:bg-slate-800/50 text-slate-500 dark:text-slate-400 hover:bg-indigo-600 hover:text-white transition-all duration-300 group"
+        >
+          {theme === 'light' ? (
+            <FaSun className="group-hover:rotate-180 transition-transform duration-500 text-yellow-500 group-hover:text-white" />
+          ) : (
+            <FaMoon className="group-hover:rotate-[360deg] transition-transform duration-500" />
+          )}
           <span className="text-xs font-black uppercase tracking-widest">
-            Mode Sombre
+            {theme === 'light' ? 'Mode Clair' : 'Mode Sombre'}
           </span>
         </button>
       </div>

@@ -90,10 +90,14 @@ const ParticipationStats = ({
   ];
 
   const themes = {
-    indigo: 'bg-indigo-600/20 text-indigo-500',
-    emerald: 'bg-emerald-600/20 text-emerald-500',
-    amber: 'bg-amber-600/20 text-amber-500',
-    purple: 'bg-purple-600/20 text-purple-500',
+    indigo:
+      'bg-indigo-50 text-indigo-600 dark:bg-indigo-600/20 dark:text-indigo-500',
+    emerald:
+      'bg-emerald-50 text-emerald-600 dark:bg-emerald-600/20 dark:text-emerald-500',
+    amber:
+      'bg-amber-50 text-amber-600 dark:bg-amber-600/20 dark:text-amber-500',
+    purple:
+      'bg-purple-50 text-purple-600 dark:bg-purple-600/20 dark:text-purple-500',
   };
 
   return (
@@ -101,17 +105,17 @@ const ParticipationStats = ({
       {stats.map((stat, index) => (
         <div
           key={index}
-          className="bg-[#1e293b] dark:bg-slate-800/50 p-6 rounded-3xl border border-slate-700/50 shadow-lg flex items-center gap-5 relative"
+          className="bg-white dark:bg-[#1e293b] p-6 rounded-3xl border border-slate-200 dark:border-slate-700/50 shadow-xl dark:shadow-lg flex items-center gap-5 relative transition-all duration-300"
         >
           {/* Icon Section */}
           <div
-            className={`${themes[stat.theme]} w-14 h-14 rounded-2xl flex items-center justify-center text-xl shrink-0`}
+            className={`${themes[stat.theme]} w-14 h-14 rounded-2xl flex items-center justify-center text-xl shrink-0 transition-colors duration-300`}
           >
             {stat.icon}
           </div>
 
           <div className="flex flex-col min-w-0 w-full">
-            <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400">
+            <span className="text-[10px] font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 transition-colors duration-300">
               {stat.title}
             </span>
 
@@ -126,11 +130,11 @@ const ParticipationStats = ({
                     }
                     className="flex items-center justify-between w-full text-left outline-none group"
                   >
-                    <span className="text-sm font-black text-white truncate pr-2">
+                    <span className="text-sm font-black text-slate-800 dark:text-white truncate pr-2 transition-colors duration-300">
                       {stat.placeholder}
                     </span>
                     <FaChevronDown
-                      className={`text-slate-500 text-[10px] transition-transform duration-300 ${activeDropdown === stat.id ? 'rotate-180' : ''}`}
+                      className={`text-slate-400 dark:text-slate-500 text-[10px] transition-transform duration-300 ${activeDropdown === stat.id ? 'rotate-180' : ''}`}
                     />
                   </button>
 
@@ -146,19 +150,19 @@ const ParticipationStats = ({
                           initial={{ opacity: 0, y: 10 }}
                           animate={{ opacity: 1, y: 0 }}
                           exit={{ opacity: 0, y: 10 }}
-                          className="absolute left-0 right-0 top-full mt-2 bg-[#1e293b] border border-slate-700 rounded-2xl shadow-2xl z-20 overflow-hidden"
+                          className="absolute left-0 right-0 top-full mt-2 bg-white dark:bg-[#1e293b] border border-slate-200 dark:border-slate-700 rounded-2xl shadow-2xl z-20 overflow-hidden"
                         >
                           {stat.items.length > 0 ? (
                             stat.items.map((item, i) => (
                               <div
                                 key={i}
-                                className="px-4 py-3 text-[11px] font-bold text-slate-200 border-b border-slate-700/50 last:border-none hover:bg-slate-700/50 transition-colors cursor-default"
+                                className="px-4 py-3 text-[11px] font-bold text-slate-700 dark:text-slate-200 border-b border-slate-100 dark:border-slate-700/50 last:border-none hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors cursor-default"
                               >
                                 {item}
                               </div>
                             ))
                           ) : (
-                            <div className="px-4 py-3 text-[11px] text-slate-500 italic text-center">
+                            <div className="px-4 py-3 text-[11px] text-slate-400 dark:text-slate-500 italic text-center">
                               Aucune donnée
                             </div>
                           )}
@@ -169,10 +173,10 @@ const ParticipationStats = ({
                 </div>
               ) : (
                 <div className="flex items-baseline gap-2">
-                  <span className="text-2xl font-black text-white leading-none">
+                  <span className="text-2xl font-black text-slate-800 dark:text-white leading-none transition-colors duration-300">
                     {stat.value}
                   </span>
-                  <span className="text-[10px] text-slate-500 font-bold uppercase tracking-tighter">
+                  <span className="text-[10px] text-slate-400 dark:text-slate-500 font-bold uppercase tracking-tighter transition-colors duration-300">
                     {stat.sub}
                   </span>
                 </div>

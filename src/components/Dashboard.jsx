@@ -110,13 +110,17 @@ const Dashboard = () => {
 
   return (
     <>
-      <div className="fixed inset-0 bg-[#0f172a] z-0" />
-      <div className="relative z-10 -mt-20 pt-28 lg:pt-32 px-6 lg:px-10 min-h-screen text-slate-200 font-sans space-y-10 pb-20">
+      <div className="fixed inset-0 bg-slate-50 dark:bg-[#0f172a] z-0 transition-colors duration-300" />
+      <div className="relative z-10 -mt-20 pt-28 lg:pt-32 px-6 lg:px-10 min-h-screen text-slate-800 dark:text-slate-200 font-sans space-y-10 pb-20 transition-colors duration-300">
         {/* Header */}
         <div className="flex justify-between items-end">
           <div>
-            <h1 className="text-4xl font-black italic tracking-tighter text-white uppercase">
-              Tableau du<span className="text-indigo-500"> bord</span>
+            <h1 className="text-4xl font-black italic tracking-tighter text-slate-900 dark:text-white uppercase transition-colors duration-300">
+              Tableau du
+              <span className="text-indigo-600 dark:text-indigo-500 transition-colors duration-300">
+                {' '}
+                bord
+              </span>
             </h1>
           </div>
         </div>
@@ -146,24 +150,24 @@ const Dashboard = () => {
           <div className="relative h-full">
             <div
               onClick={() => setShowTopLearners(!showTopLearners)}
-              className="cursor-pointer bg-[#1e2335] p-8 rounded-[2.5rem] border border-slate-700/50 shadow-xl transition-all hover:bg-[#252b41] h-full flex flex-col justify-center"
+              className="cursor-pointer bg-white dark:bg-[#1e2335] p-8 rounded-[2.5rem] border border-slate-200 dark:border-slate-700/50 shadow-xl dark:shadow-none transition-all hover:bg-slate-50 dark:hover:bg-[#252b41] h-full flex flex-col justify-center"
             >
               <div className="flex items-center gap-4">
-                <div className="w-12 h-12 rounded-xl flex items-center justify-center bg-[#3c1e5a] text-[#a855f7] shrink-0">
+                <div className="w-12 h-12 rounded-xl flex items-center justify-center bg-indigo-50 dark:bg-[#3c1e5a] text-indigo-600 dark:text-[#a855f7] shrink-0 transition-colors duration-300">
                   <FaTrophy size={22} />
                 </div>
                 <div className="flex-1 overflow-hidden">
                   <p className="text-slate-500 text-[10px] font-black uppercase tracking-[0.2em] mb-1">
                     Top Learner
                   </p>
-                  <h5 className="text-lg font-black italic text-white truncate uppercase tracking-tighter">
+                  <h5 className="text-lg font-black italic text-slate-800 dark:text-white truncate uppercase tracking-tighter transition-colors duration-300">
                     {topWinners.length > 1
                       ? 'Decouvrir top learners'
                       : topWinners[0]?.name || 'N/A'}
                   </h5>
                 </div>
                 <FaChevronDown
-                  className={`text-slate-500 transition-transform duration-300 ${showTopLearners ? 'rotate-180' : ''}`}
+                  className={`text-slate-400 dark:text-slate-500 transition-transform duration-300 ${showTopLearners ? 'rotate-180' : ''}`}
                 />
               </div>
             </div>
@@ -174,16 +178,16 @@ const Dashboard = () => {
                   initial={{ opacity: 0, y: -10 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -10 }}
-                  className="absolute z-50 mt-4 w-full bg-[#1e2335] border border-slate-700 rounded-3xl shadow-2xl overflow-hidden backdrop-blur-xl"
+                  className="absolute z-50 mt-4 w-full bg-white dark:bg-[#1e2335] border border-slate-200 dark:border-slate-700 rounded-3xl shadow-2xl overflow-hidden backdrop-blur-xl"
                 >
                   {topWinners.map((emp, index) => (
                     <div
                       key={index}
-                      className="px-6 py-4 hover:bg-white/5 border-b border-slate-700/50 last:border-0 transition-colors"
+                      className="px-6 py-4 hover:bg-slate-50 dark:hover:bg-white/5 border-b border-slate-100 dark:border-slate-700/50 last:border-0 transition-colors"
                     >
-                      <p className="text-sm font-bold text-slate-200">
+                      <p className="text-sm font-bold text-slate-700 dark:text-slate-200">
                         {emp.fullName}{' '}
-                        <span className="text-indigo-400 ml-1">
+                        <span className="text-indigo-500 dark:text-indigo-400 ml-1">
                           ({emp.count})
                         </span>
                       </p>
@@ -197,8 +201,8 @@ const Dashboard = () => {
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
           {/* Bar Chart */}
-          <div className="lg:col-span-8 bg-slate-800/20 backdrop-blur-xl p-8 rounded-[3rem] border border-slate-700/50 shadow-2xl">
-            <h3 className="text-xl font-black italic uppercase mb-8 flex items-center gap-3">
+          <div className="lg:col-span-8 bg-white dark:bg-slate-800/20 backdrop-blur-xl p-8 rounded-[3rem] border border-slate-200 dark:border-slate-700/50 shadow-2xl dark:shadow-none transition-all duration-300">
+            <h3 className="text-xl font-black italic uppercase mb-8 flex items-center gap-3 text-slate-800 dark:text-white transition-colors duration-300">
               <FaChartLine className="text-indigo-500" /> Inscriptions par
               Collaborateur
             </h3>
@@ -279,8 +283,8 @@ const Dashboard = () => {
           </div>
 
           {/* Pie Chart - المبيان الدائري المطور */}
-          <div className="lg:col-span-4 bg-slate-800/20 backdrop-blur-xl p-8 rounded-[3rem] border border-slate-700/50 shadow-2xl flex flex-col items-center min-h-full">
-            <h3 className="text-2xl font-black italic uppercase mb-2 tracking-tighter text-white">
+          <div className="lg:col-span-4 bg-white dark:bg-slate-800/20 backdrop-blur-xl p-8 rounded-[3rem] border border-slate-200 dark:border-slate-700/50 shadow-2xl dark:shadow-none flex flex-col items-center min-h-full transition-all duration-300">
+            <h3 className="text-2xl font-black italic uppercase mb-2 tracking-tighter text-slate-800 dark:text-white transition-colors duration-300">
               Part des Formations
             </h3>
             <p className="text-slate-500 text-[10px] font-black uppercase tracking-[0.2em] mb-6">
@@ -359,9 +363,9 @@ const Dashboard = () => {
           </div>
 
           {/* Radar Chart */}
-          <div className="lg:col-span-12 bg-slate-800/20 p-10 rounded-[3rem] border border-slate-700/50 shadow-2xl flex flex-col items-center relative overflow-hidden">
+          <div className="lg:col-span-12 bg-white dark:bg-slate-800/20 p-10 rounded-[3rem] border border-slate-200 dark:border-slate-700/50 shadow-2xl dark:shadow-none flex flex-col items-center relative overflow-hidden transition-all duration-300">
             <div className="text-center mb-8 relative z-10">
-              <h3 className="text-2xl font-black italic uppercase">
+              <h3 className="text-2xl font-black italic uppercase text-slate-800 dark:text-white transition-colors duration-300">
                 Équilibre des Formations (Complet)
               </h3>
               <p className="text-slate-500 text-xs font-bold uppercase">
@@ -418,21 +422,23 @@ const Dashboard = () => {
 
 const StatCard = ({ label, value, icon, color }) => {
   const schemes = {
-    indigo: 'text-indigo-500 bg-indigo-500/10 border-indigo-500/20',
-    rose: 'text-rose-500 bg-rose-500/10 border-rose-500/20',
-    emerald: 'text-emerald-500 bg-emerald-500/10 border-emerald-500/20',
+    indigo:
+      'text-indigo-600 dark:text-indigo-500 bg-indigo-50 dark:bg-indigo-500/10 border-indigo-100 dark:border-indigo-500/20',
+    rose: 'text-rose-600 dark:text-rose-500 bg-rose-50 dark:bg-rose-500/10 border-rose-100 dark:border-rose-500/20',
+    emerald:
+      'text-emerald-600 dark:text-emerald-500 bg-emerald-50 dark:bg-emerald-500/10 border-emerald-100 dark:border-emerald-500/20',
   };
   return (
-    <div className="bg-slate-800/40 p-8 rounded-[2.5rem] border border-slate-700/50 shadow-xl h-full flex flex-col justify-center">
+    <div className="bg-white dark:bg-slate-800/40 p-8 rounded-[2.5rem] border border-slate-200 dark:border-slate-700/50 shadow-xl dark:shadow-none h-full flex flex-col justify-center transition-all duration-300">
       <div
-        className={`w-12 h-12 rounded-xl flex items-center justify-center mb-6 border shrink-0 ${schemes[color]}`}
+        className={`w-12 h-12 rounded-xl flex items-center justify-center mb-6 border shrink-0 transition-colors duration-300 ${schemes[color]}`}
       >
         {React.cloneElement(icon, { size: 20 })}
       </div>
       <p className="text-slate-500 text-[10px] font-black uppercase tracking-[0.2em] mb-1">
         {label}
       </p>
-      <h3 className="text-4xl font-black italic tracking-tighter text-white">
+      <h3 className="text-4xl font-black italic tracking-tighter text-slate-800 dark:text-white transition-colors duration-300">
         {value}
       </h3>
     </div>
