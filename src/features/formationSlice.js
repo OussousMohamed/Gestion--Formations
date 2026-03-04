@@ -5,7 +5,6 @@ import axios from 'axios';
 // API
 const API_URL = "http://localhost:8585/formations";
 
-
 // CRUD Operations
 
 // Fetch all formations

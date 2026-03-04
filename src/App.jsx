@@ -2,6 +2,9 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Sidebar from './components/SideBar';
 import TopBar from './components/TopBar';
 import EmployeeList from './components/EmployeeList';
+import FormationList from './components/FormationList';
+import ParticipationList from './components/ParticipationList';
+import Dashboard from './components/Dashboard';
 import { Toaster } from 'react-hot-toast';
 
 export default function App() {
@@ -17,9 +20,10 @@ export default function App() {
           <TopBar />
           <div className="w-full">
             <Routes>
-              <Route path="/" element={<div>Dashboard Coming Soon...</div>} />
+              <Route path="/" element={<Dashboard />} />
               <Route path="/employees" element={<EmployeeList />} />
-              {/* Add other routes here */}
+              <Route path="/formations" element={<FormationList />} />
+              <Route path="/participations" element={<ParticipationList />} />
             </Routes>
           </div>
         </main>

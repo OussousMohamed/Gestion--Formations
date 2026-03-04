@@ -190,13 +190,6 @@
       "datedebut": "2026-03-20",
       "datefin": "2026-03-25",
       "etat": "programmée"
-    },
-    {
-      "id": "14",
-      "Sujet": "Agile ",
-      "datedebut": "2026-04-10",
-      "datefin": "2026-04-15",
-      "etat": "programmée"
     }
   ],
   "participations": [
@@ -274,6 +267,22 @@
       "id": "16",
       "idemp": "1",
       "idform": "3"
+    },
+    {
+      "id": "17",
+      "idemp": 15,
+      "idform": 9
+    },
+    {
+      "id": "18",
+      "idemp": 15,
+      "idform": 2
+    },
+    {
+      "id": "19",
+      "idemp": 15,
+      "idform": 8
     }
-  ]
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
 }
