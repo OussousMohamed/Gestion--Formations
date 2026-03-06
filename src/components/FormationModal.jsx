@@ -49,7 +49,7 @@ export default function FormationModal({
     const end = new Date(formData.datefin).setHours(0, 0, 0, 0);
 
     if (end < start) {
-      toast.error('La date de fin لا يمكن أن تكون قبل تاريخ البداية !');
+      toast.error('La date de fin doit etre > date debut');
       return; 
     }
 

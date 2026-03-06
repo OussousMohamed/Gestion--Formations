@@ -7,6 +7,8 @@ import {
   FaVenusMars,
   FaMoneyBillWave,
 } from 'react-icons/fa';
+import toast from 'react-hot-toast';
+
 
 export default function EmployeeModal({
   show,
@@ -35,6 +37,10 @@ export default function EmployeeModal({
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (formData.salaire < 2000) {
+      toast.error('Le salaire doit etre > 2000');
+      return; 
+    }
     handleSave(formData);
   };
 
