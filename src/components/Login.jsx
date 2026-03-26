@@ -89,7 +89,7 @@ const Login = () => {
         </div>
 
         <p className="text-center text-slate-500 text-xs mt-8 font-bold uppercase tracking-widest">
-          &copy; 2026 GF Platform — Sécurisé
+          &copy; 2026 Gestion Formation
         </p>
       </motion.div>
     </div>

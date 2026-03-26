@@ -124,13 +124,6 @@
       "etat": "encours"
     },
     {
-      "id": "2",
-      "Sujet": "Framework Angular",
-      "datedebut": "2025-12-16",
-      "datefin": "2025-12-21",
-      "etat": "encours"
-    },
-    {
       "id": "3",
       "Sujet": "PHP Laravel ",
       "datedebut": "2025-12-29",

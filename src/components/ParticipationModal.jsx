@@ -7,6 +7,8 @@ import {
   FaSave,
   FaLink,
 } from 'react-icons/fa';
+import toast from 'react-hot-toast';
+
 
 export default function ParticipationModal({
   show,
@@ -15,6 +17,7 @@ export default function ParticipationModal({
   initialData,
   employes = [],
   formations = [],
+  participations = [],
 }) {
   const [formData, setFormData] = useState({
     idemp: '',
@@ -35,10 +38,24 @@ export default function ParticipationModal({
   const handleSubmit = (e) => {
     e.preventDefault();
 
+    if (!initialData) {
+      const isDuplicate = participations.some(
+        (p) =>
+          String(p.idemp) === String(formData.idemp) &&
+          String(p.idform) === String(formData.idform),
+      );
+
+      if (isDuplicate) {
+        toast.error('Ce Employee est déjà inscrit à cette formation !');
+        return;
+      }
+    }
+
     const dataToSave = {
       ...formData,
       idemp: Number(formData.idemp),
       idform: Number(formData.idform),
+      date_inscription: new Date().toISOString().split('T')[0], 
     };
 
     if (initialData?.id) {

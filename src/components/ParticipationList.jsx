@@ -10,6 +10,7 @@ import {
   FaArrowRight,
   FaUsers,
   FaBookOpen,
+  FaEye,
 } from 'react-icons/fa';
 import { fetchEmployees } from '../features/employeeSlice';
 import { fetchFormations } from '../features/formationSlice';
@@ -26,16 +27,22 @@ import Paginnation from './Paginnation';
 import ParticipationFilterBar from './ParticipationFilterBar';
 import ExportActionParticipation from './ExportActionParticipation';
 import toast from 'react-hot-toast';
-import ParticipationStats from './ParticipationStats';
+import ParticipationStats from './ParticipationStats'; 
+import EmployeeDetailModal from './EmployeeDetailModal';
 
 export default function ParticipationList() {
   const dispatch = useDispatch();
   const { participations = [], loading: partLoading } = useSelector(
     (state) => state.participations,
   );
+  
+  const { employees } = useSelector((state) => state.employees);  
   const { employees: employes = [] } = useSelector((state) => state.employees);
   const { formations = [] } = useSelector((state) => state.formations);
 
+  const [showDetailModal, setShowDetailModal] = useState(false);
+  const [selectedEmployee, setSelectedEmployee] = useState(null);
+  
   const [loading, setLoading] = useState(true);
   const [searchEmp, setSearchEmp] = useState('');
   const [searchForm, setSearchForm] = useState('');
@@ -142,6 +149,7 @@ export default function ParticipationList() {
           initialData={currentParticipation}
           employes={employes}
           formations={formations}
+          participations={participations} 
           onSave={handleSave}
           isEdit={isEdit}
         />
@@ -175,7 +183,7 @@ export default function ParticipationList() {
         />
 
         <ParticipationFilterBar
-          filteredData={dataForExport} 
+          filteredData={dataForExport}
           onSearchEmp={setSearchEmp}
           onSearchForm={setSearchForm}
           onReset={() => {
@@ -184,6 +192,8 @@ export default function ParticipationList() {
           }}
           searchEmp={searchEmp}
           searchForm={searchForm}
+          employees={employees}
+          formations={formations}
         />
 
         {/* Main Table Card */}
@@ -202,6 +212,7 @@ export default function ParticipationList() {
                   <th className="px-8 py-6 text-[10px] font-black text-slate-400 uppercase tracking-[0.2em]">
                     Formation
                   </th>
+
                   <th className="px-8 py-6 text-center text-[10px] font-black text-slate-400 uppercase tracking-[0.2em]">
                     Actions
                   </th>
@@ -219,7 +230,7 @@ export default function ParticipationList() {
 
                     return (
                       <motion.tr
-                        key={p.id || index} 
+                        key={p.id || index}
                         layout
                         initial={{ opacity: 0, scale: 0.98 }}
                         animate={{ opacity: 1, scale: 1 }}
@@ -261,6 +272,15 @@ export default function ParticipationList() {
                           <div className="flex justify-center gap-2">
                             <button
                               onClick={() => {
+                                setSelectedEmployee(emp);
+                                setShowDetailModal(true);
+                              }}
+                              className="p-2 text-slate-400 hover:text-emerald-600 hover:bg-emerald-50 dark:hover:bg-slate-700 rounded-xl transition-all"
+                            >
+                              <FaEye size={16} />
+                            </button>
+                            <button
+                              onClick={() => {
                                 setIsEdit(true);
                                 setCurrentParticipation(p);
                                 setShowModal(true);
@@ -288,6 +308,15 @@ export default function ParticipationList() {
             </table>
           </div>
         </div>
+        {/*Modal Detail */}
+        <EmployeeDetailModal
+          show={showDetailModal}
+          onClose={() => setShowDetailModal(false)}
+          employee={selectedEmployee}
+          participations={participations}
+          formations={formations}
+        />
+
         {/* Pagination */}
         <div className="mt-8 flex justify-center">
           <Paginnation
